@@ -37,7 +37,7 @@ export class Link {
     nullable: false,
     default: false
   })
-  public: boolean;
+  isPublic: boolean;
 
   @Column({
     type: "int",
