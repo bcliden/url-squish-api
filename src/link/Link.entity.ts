@@ -7,12 +7,16 @@ import {
   BeforeInsert
 } from "typeorm";
 import * as shortid from "shortid";
+import { IsString, IsBoolean, IsInt, IsDate } from "class-validator";
 
 @Entity()
 export class Link {
+  @IsString()
+  // @IsShortid()
   @PrimaryGeneratedColumn()
   id: string;
 
+  @IsString()
   @Column({
     type: "text",
     nullable: false,
@@ -20,18 +24,21 @@ export class Link {
   })
   publicID: string;
 
+  @IsString()
   @Column({
     type: "text",
     nullable: false
   })
   title: string;
 
+  @IsString()
   @Column({
     type: "text",
     nullable: false
   })
   url: string;
 
+  @IsBoolean()
   @Column({
     type: "boolean",
     nullable: false,
@@ -39,6 +46,7 @@ export class Link {
   })
   isPublic: boolean;
 
+  @IsInt()
   @Column({
     type: "int",
     nullable: false,
@@ -46,6 +54,7 @@ export class Link {
   })
   views: number;
 
+  @IsDate()
   @CreateDateColumn()
   created: Date;
 
