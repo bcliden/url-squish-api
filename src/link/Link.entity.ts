@@ -2,8 +2,11 @@ import {
   Entity,
   Column,
   CreateDateColumn,
-  PrimaryGeneratedColumn
+  PrimaryGeneratedColumn,
+  Generated,
+  BeforeInsert
 } from "typeorm";
+import * as shortid from "shortid";
 
 @Entity()
 export class Link {
@@ -12,7 +15,8 @@ export class Link {
 
   @Column({
     type: "text",
-    nullable: false
+    nullable: false,
+    default: ""
   })
   publicID: string;
 
@@ -44,4 +48,9 @@ export class Link {
 
   @CreateDateColumn()
   created: Date;
+
+  @BeforeInsert()
+  fillPublicID() {
+    this.publicID = shortid.generate();
+  }
 }
