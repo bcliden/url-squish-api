@@ -3,7 +3,6 @@ import {
   Column,
   CreateDateColumn,
   PrimaryGeneratedColumn,
-  Generated,
   BeforeInsert
 } from "typeorm";
 import * as shortid from "shortid";
@@ -22,7 +21,7 @@ export class Link {
     nullable: false,
     default: ""
   })
-  publicID: string;
+  publicId: string;
 
   @IsString()
   @Column({
@@ -59,7 +58,7 @@ export class Link {
   created: Date;
 
   @BeforeInsert()
-  fillPublicID() {
-    this.publicID = shortid.generate();
+  fillPublicId() {
+    this.publicId = shortid.generate();
   }
 }
