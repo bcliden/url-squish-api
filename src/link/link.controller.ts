@@ -5,7 +5,14 @@ import { LinkDTO } from "./interfaces";
 import { Crud } from "@nestjsx/crud";
 
 @Crud({
-  model: { type: Link }
+  model: { type: Link },
+  params: {
+    id: {
+      field: "publicId",
+      type: "string",
+      primary: true
+    }
+  }
 })
 @Controller("link")
 export class LinkController {
