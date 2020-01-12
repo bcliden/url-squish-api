@@ -9,9 +9,10 @@ import { Link } from "./link/Link.entity";
   imports: [
     TypeOrmModule.forRoot({
       type: "sqlite",
-      database: "../database.sql",
+      database: "main.sqlite",
       synchronize: true,
-      entities: [Link]
+      entities: [Link],
+      logging: true
     }),
     LinkModule
   ],

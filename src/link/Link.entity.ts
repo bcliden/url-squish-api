@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryColumn } from "typeorm";
+import {
+  Entity,
+  Column,
+  PrimaryColumn,
+  CreateDateColumn,
+  UpdateDateColumn
+} from "typeorm";
 
 @Entity()
 export class Link {
@@ -38,6 +44,6 @@ export class Link {
   views: number;
 
   // age / createdAt
-
-  //
+  @CreateDateColumn()
+  createdAt: Date;
 }
