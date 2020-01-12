@@ -1,21 +1,21 @@
 import {
   Entity,
   Column,
-  PrimaryColumn,
   CreateDateColumn,
-  UpdateDateColumn
+  PrimaryGeneratedColumn
 } from "typeorm";
 
 @Entity()
 export class Link {
-  // expecting the hashid here
-  @PrimaryColumn({
+  @PrimaryGeneratedColumn()
+  id: string;
+
+  @Column({
     type: "text",
     nullable: false
   })
-  id: string;
+  publicID: string;
 
-  // title
   @Column({
     type: "text",
     nullable: false
@@ -28,7 +28,6 @@ export class Link {
   })
   url: string;
 
-  //
   @Column({
     type: "boolean",
     nullable: false,
@@ -43,7 +42,6 @@ export class Link {
   })
   views: number;
 
-  // age / createdAt
   @CreateDateColumn()
-  createdAt: Date;
+  created: Date;
 }

@@ -11,14 +11,14 @@ export class LinkService {
     private readonly link: Repository<Link>
   ) {}
 
-  async getLinks(): Promise<Link[]> {
-    return this.link.find();
+  async getLinks(page, size): Promise<Link[]> {
+    return this.link.find({ skip: page * size, take: size });
   }
 
   async postLink(link: LinkDTO): Promise<Link> {
     const newLink = this.link.create({
       ...link,
-      id: shortid.generate()
+      publicID: shortid.generate()
     });
     await this.link.save(newLink);
     return newLink;
