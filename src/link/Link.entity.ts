@@ -58,7 +58,13 @@ export class Link {
   created: Date;
 
   @BeforeInsert()
-  fillPublicId() {
+  before() {
+    // generate publicId
     this.publicId = shortid.generate();
+
+    // check for absolute url
+    if (!this.url.includes("http://") && !this.url.includes("https://")){
+      this.url = "http://" + this.url
+    }
   }
 }

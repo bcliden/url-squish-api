@@ -14,7 +14,7 @@ import { Crud } from "@nestjsx/crud";
     }
   }
 })
-@Controller("link")
+@Controller("/api/link")
 export class LinkController {
   constructor(public service: LinkService) {}
 }
