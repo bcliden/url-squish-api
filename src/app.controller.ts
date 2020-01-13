@@ -23,12 +23,13 @@ export class AppController {
       const id = req.params['id'];
       if (shortid.isValid(id)) {
         let { url } = await this.linkService.findOne({ publicId: id });
-        console.log("Redirecting to URL -----> [ ", url, " ]")
+        console.log("Redirecting to URL -----> [ ", url, " ]");
         res.redirect(url);
       } else {
         throw new BadRequestException("Malformed Id");
       }
     } catch (error) {
+      console.error(error)
       throw new BadRequestException("Malformed Id");
     }
   }
